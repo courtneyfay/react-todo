@@ -1,5 +1,4 @@
 body {
-	font-family: "Brush Script MT", cursive;
   margin: 0;
   padding: 0;
 }
@@ -23,11 +22,10 @@ h2 {
 }
 
 h1, h2 {
-	font-family: "Brush Script MT", cursive;
+	color: #aaa;
 }
 
 p {
-	font-family: "Brush Script MT", cursive;
 	font-size: 2em;
 }
 
