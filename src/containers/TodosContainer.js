@@ -27,7 +27,7 @@ class TodosContainer extends Component {
 		let newTodo = {
 			body: newBody,
 			completed: false
-		}
+		};
 		TodoModel.create(newTodo).then((res) => {
 			console.log('created todo', res);
 			let todos = this.state.todos;
@@ -46,6 +46,28 @@ class TodosContainer extends Component {
 		});
 	}
 
+	updateTodo(todo, id) {
+		TodoModel.update(todo, id).then((res) => {
+			let todos = this.state.todos;
+
+			for (let i = 0; i < todos.length; i++) {
+				if (todos[i]._id === res._id) {
+					console.log('this is the todo being updated');
+					console.log(todos[i].body);
+					console.log('this is the res');
+					console.log(res.body);
+					todos[i] = {
+						body: res.body,
+						completed: false,
+						_id: res._id
+					};
+				}
+			}
+			console.log(todos);
+			this.setState({todos});
+		});
+	}
+
 	render(){
 		return (
 			<div className='todos-container'>
@@ -53,7 +75,8 @@ class TodosContainer extends Component {
 					createTodo={this.createTodo.bind(this)} />
 				<TodoList
 					todos={this.state.todos}
-					onDeleteTodo={this.deleteTodo.bind(this)} />
+					onDeleteTodo={this.deleteTodo.bind(this)} 
+					onUpdateTodo={this.updateTodo.bind(this)} />
 			</div>
 		)
 	}

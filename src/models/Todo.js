@@ -23,6 +23,16 @@ class TodoModel {
 		});
 		return request;
 	}
+	static update(todo, id) {
+		let request = $.ajax({
+			url: `https://super-crud.herokuapp.com/todos/${id}`,
+			method: 'PUT',
+			data: {
+				body: todo
+			} 
+		});
+		return request;
+	}
 }
 
 export default TodoModel;
